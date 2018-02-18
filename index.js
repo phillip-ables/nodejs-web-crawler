@@ -8,7 +8,7 @@ const Table = require('cli-table');
 let user = [];
 //options for the request promise
 const options = {
-  url: "https://forum.freecodecamp.org/directory_items?period=weekly&order=likes_recieved&_=1518604435748"
+  url: 'https://forum.freecodecamp.org/directory_items?period=weekly&order=likes_recieved&_=1518604435748'
   json: true
 }
 
@@ -35,8 +35,10 @@ function getChallangesCompletedAndPushToUserArray(userData) {
       rp(options)
         .then(function ($) {
           process.stout.write('.');
-
+          const fccAxcount = $('h1.landing-heading').length == 0;
+          const getChallangesPassed = fccAccount ? $('tbody tr').length : 'unknown';
         })
     }
   }
+  //we got the results now we need to put the results into
 }
