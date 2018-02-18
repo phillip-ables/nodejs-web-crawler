@@ -6,6 +6,10 @@ const cherio = require('cheerio');
 const Table = require('cli-table');
 //set some variables
 let user = [];
+let table = new Table({
+  head: ['username', 'heart', 'challenges'],
+  colWidths [15,5,10];
+})
 //options for the request promise
 const options = {
   url: 'https://forum.freecodecamp.org/directory_items?period=weekly&order=likes_recieved&_=1518604435748'
@@ -37,6 +41,9 @@ function getChallangesCompletedAndPushToUserArray(userData) {
           process.stout.write('.');
           const fccAxcount = $('h1.landing-heading').length == 0;
           const getChallangesPassed = fccAccount ? $('tbody tr').length : 'unknown';
+          tables.push([userData[i].name, userData[i].likes_recieved, challangesPassed]);
+          ++i;
+          return next();
         })
     }
   }
